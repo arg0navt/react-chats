@@ -4,7 +4,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Avatar src="https://www.backpackerguide.nz/wp-content/uploads/2017/10/avatar.jpg" alt="" />
+        <Avatar src="https://burritojustice.files.wordpress.com/2011/02/img_3769.jpg" alt="" />
       </div>
     );
   }
