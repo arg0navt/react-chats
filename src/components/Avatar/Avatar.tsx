@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style/index.scss";
+import styles from "./Avatar.module.scss";
 
 export interface IAvatarProps {
   src: string;
@@ -10,7 +10,7 @@ const Avatar = (props: IAvatarProps) => {
   const getOriginalOrientation = (e: any) => {};
   const [orientation, changeOrientation] = useState(null);
   return (
-    <div className="rc-avatar">
+    <div className={styles.rcAvatar}>
       <img
         src={props.src}
         alt={props.alt}
