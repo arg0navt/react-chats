@@ -51,7 +51,10 @@ export default class Avatar extends React.Component<
       <img className={styles.horizontal} src={this.props.capSrc} />
     ) : null;
 
-  renderOnline = () => this.props.online && <span className={styles.online} />;
+  renderOnline = () =>
+    this.props.online && (
+      <div className={`${styles.wrapper} ${styles.online}`} />
+    );
 
   render() {
     console.log(styles.wrapper);
@@ -60,9 +63,7 @@ export default class Avatar extends React.Component<
         <div className={`${styles.wrapper} ${styles.wrapperImg}`}>
           {this.renderImg()}
         </div>
-        <div className={`${styles.wrapper} ${styles.wrapperOnline}`}>
-          {this.renderOnline()}
-        </div>
+        {this.renderOnline()}
       </div>
     );
   }

@@ -34,17 +34,21 @@
     overflow: hidden;
   }
 
-  .wrapperOnline {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
   .online {
     display: block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #38cc51;
+    position: relative;
+    top: -100%;
+    right: 0px;
+    transform: rotate(90deg);
+
+    &:after{
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #38cc51;
+      margin-top: 5px;
+    }
   }
 }
