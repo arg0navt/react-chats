@@ -1,37 +1,69 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Avatar.module.scss";
 
 export interface IAvatarProps {
   src: string;
+  capSrc: string;
   alt: string | undefined;
+  online: boolean;
   style: object | undefined;
 }
 
-const Avatar = (props: IAvatarProps) => {
-  const [orientation, changeOrientation] = useState("none");
-  const getOriginalOrientation = (img: any) => {
-    if(img) {
-      changeOrientation(img.clientHeight > img.clientWidth ? "vertical" : "horizontal")
+export interface IAvatarState {
+  orientation: string;
+}
+
+export default class Avatar extends React.Component<
+  IAvatarProps,
+  IAvatarState
+> {
+  static defaultProps = {
+    src: "",
+    capSrc: "",
+    alt: "",
+    online: false,
+    style: {}
+  };
+
+  state = {
+    orientation: "none"
+  };
+
+  getOriginalOrientation = (img: any) => {
+    if (img) {
+      this.setState({
+        orientation:
+          img.clientHeight > img.clientWidth ? "vertical" : "horizontal"
+      });
     }
   };
 
-  return (
-    <div className={styles.rcAvatar}>
+  renderImg = () =>
+    this.props.src ? (
       <img
-        className={styles[orientation]}
-        src={props.src}
-        alt={props.alt}
-        onLoad={(e: React.SyntheticEvent) => getOriginalOrientation(e.target)}
-        style={props.style}
+        className={styles[this.state.orientation]}
+        onLoad={(e: React.SyntheticEvent) =>
+          this.getOriginalOrientation(e.target)
+        }
+        {...this.props}
       />
-    </div>
-  );
-};
+    ) : this.props.capSrc ? (
+      <img className={styles.horizontal} src={this.props.capSrc} />
+    ) : null;
 
-Avatar.defaultProps = {
-  src: "",
-  alt: "",
-  style: {}
-};
+  renderOnline = () => this.props.online && <span className={styles.online} />;
 
-export default Avatar;
+  render() {
+    console.log(styles.wrapper);
+    return (
+      <div className={styles.container} style={this.props.style}>
+        <div className={`${styles.wrapper} ${styles.wrapperImg}`}>
+          {this.renderImg()}
+        </div>
+        <div className={`${styles.wrapper} ${styles.wrapperOnline}`}>
+          {this.renderOnline()}
+        </div>
+      </div>
+    );
+  }
+}

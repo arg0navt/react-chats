@@ -1,24 +1,50 @@
-.rcAvatar {
+.container {
   width: 100px;
   height: 100px;
-  overflow: hidden;
-  background: #ccc;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 
-  img.none {
-    opacity: 0;
-  }
-
-  img.vertical {
+  .wrapper {
     width: 100%;
-    height: auto;
+    height: 100%;
+    border-radius: 50%;
+    
+  
+    img.none {
+      opacity: 0;
+    }
+  
+    img.vertical {
+      width: 100%;
+      height: auto;
+      opacity: 1;
+    }
+  
+    img.horizontal {
+      height: 100%;
+      width: auto;
+      opacity: 1;
+    }
   }
 
-  img.horizontal {
-    height: 100%;
-    width: auto;
+  .wrapperImg {
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .wrapperOnline {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .online {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #38cc51;
   }
 }
