@@ -3,10 +3,9 @@ import styles from "./Avatar.module.scss";
 
 export interface IAvatarProps {
   src: string;
-  capSrc: string;
-  alt: string | undefined;
-  online: boolean;
-  style: object | undefined;
+  alt?: string | undefined;
+  online?: boolean;
+  style?: object | undefined;
 }
 
 export interface IAvatarState {
@@ -19,7 +18,6 @@ export default class Avatar extends React.Component<
 > {
   static defaultProps = {
     src: "",
-    capSrc: "",
     alt: "",
     online: false,
     style: {}
@@ -39,17 +37,22 @@ export default class Avatar extends React.Component<
   };
 
   renderImg = () =>
-    this.props.src ? (
+    this.props.src && (
       <img
-        className={styles[this.state.orientation]}
+        src={this.props.src}
+        alt={this.props.alt}
+        style={
+          this.state.orientation !== "none"
+            ? this.state.orientation === "vertical"
+              ? { width: "100%", height: "auto", opacity: 1 }
+              : { width: "auto", height: "100%", opacity: 1 }
+            : { width: "100%", height: "100%", opacity: 0 }
+        }
         onLoad={(e: React.SyntheticEvent) =>
           this.getOriginalOrientation(e.target)
         }
-        {...this.props}
       />
-    ) : this.props.capSrc ? (
-      <img className={styles.horizontal} src={this.props.capSrc} />
-    ) : null;
+    );
 
   renderOnline = () =>
     this.props.online && (
@@ -57,7 +60,6 @@ export default class Avatar extends React.Component<
     );
 
   render() {
-    console.log(styles.wrapper);
     return (
       <div className={styles.container} style={this.props.style}>
         <div className={`${styles.wrapper} ${styles.wrapperImg}`}>

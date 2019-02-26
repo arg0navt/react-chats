@@ -5,8 +5,7 @@ class App extends Component {
     return (
       <div className="App">
         <Avatar 
-          src="" 
-          capSrc=""
+          src="https://avatars.mds.yandex.net/get-pdb/1054037/9e83b428-6426-4802-b8b2-d302f6f88485/s1200" 
           alt=""
           style={{width: 50, height: 50}}
           online={true}
