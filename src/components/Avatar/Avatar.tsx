@@ -6,6 +6,7 @@ export interface IAvatarProps {
   alt?: string | undefined;
   online?: boolean;
   style?: object | undefined;
+  onError: (e: React.SyntheticEvent) => void;
 }
 
 export interface IAvatarState {
@@ -20,7 +21,8 @@ export default class Avatar extends React.Component<
     src: "",
     alt: "",
     online: false,
-    style: {}
+    style: {},
+    onError: (e: React.SyntheticEvent) => {}
   };
 
   state = {
@@ -51,6 +53,7 @@ export default class Avatar extends React.Component<
         onLoad={(e: React.SyntheticEvent) =>
           this.getOriginalOrientation(e.target)
         }
+        onError={(e: React.SyntheticEvent) => this.props.onError(e)}
       />
     );
 
