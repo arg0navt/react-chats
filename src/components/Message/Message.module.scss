@@ -1,14 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
 
 .block {
-  overflow: hidden;
   padding: 15px;
   border-radius: 5px;
   background: #0eba47;
   max-width: 400px;
+  position: relative;
+
+  &.float-right {
+    float: right;
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: -21px;
+      top: 15px;
+      border: 10px solid transparent;
+      border-left: 10px solid #0eba47;
+    }
+  }
 
   &.float-left {
-    float: right;
+    float: left;
+    &:after {
+      content: "";
+      position: absolute;
+      left: -21px;
+      top: 15px;
+      border: 10px solid transparent;
+      border-right: 10px solid #0eba47;
+    }
   }
 
   .messageText {
