@@ -22,9 +22,9 @@ export default class Message extends React.Component<IMessageProps> {
           {this.props.message ? (
             <p className={styles.messageText}>{this.props.message}</p>
           ) : null}
-          {this.props.date ? (
-            <span className={styles.date}>{this.props.date}</span>
-          ) : null}
+//           {this.props.date ? (
+//             <span className={styles.date}>{this.props.date}</span>
+//           ) : null}
         </div>
       </>
     );
