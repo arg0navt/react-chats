@@ -16,9 +16,9 @@ export default class Message extends React.Component<IMessageProps> {
   render() {
     return (
       <>
-        <div
-          className={`${styles.block} ${styles["float-" + this.props.float]}`}
-        >
+//         <div
+//           className={`${styles.block} ${styles["float-" + this.props.float]}`}
+//         >
           {this.props.message ? (
             <p className={styles.messageText}>{this.props.message}</p>
           ) : null}
